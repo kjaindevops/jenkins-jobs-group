@@ -2,7 +2,7 @@
 // Creating view as VIEWNAME will create it under directory where you put your code
 
 def viewsPrefixAcr = '/aws/group/groupfunctions-terraform/'
-def viewsPrefixFms = 'aws/group/groupfunctions-trf/'
+def viewsPrefixFms = '/aws/group/groupfunctions-trf/'
 
 // Adding job name to commonJobNames will add it to all listViews we have,
 // i.e in all lists you can have additionally seedjob included
