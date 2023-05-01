@@ -1,3 +1,4 @@
+def dslScriptFilename = ''
 def dslScriptDirectory = "functions_terraform"
 def dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/**/*.groovy"
 
