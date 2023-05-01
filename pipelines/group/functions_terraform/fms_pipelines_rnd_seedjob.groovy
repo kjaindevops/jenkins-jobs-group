@@ -1,5 +1,6 @@
 def dslScriptFilename = ''
 def gitBranchType = ''
+def gitBranchName = ''
 def dslScriptDirectory = "functions_terraform"
 def dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/**/*.groovy"
 
