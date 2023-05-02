@@ -24,7 +24,7 @@ switch(gitBranchType) {
 
 node {
     stage ('Checkout'){
-        deleteDir()
+        deleteDir
         checkout([$class: 'GitSCM', branches: [[name: gitBranch]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]], submoduleCfg: [], userRemoteConfigs: [[url: gitUrl]]])
     }
 
