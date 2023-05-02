@@ -4,7 +4,7 @@ def gitBranchName = ''
 def dslScriptDirectory = "functions_terraform"
 def dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/**/*.groovy"
 
-if(${dslScriptFilename} != '') {
+if(dslScriptFilename != '') {
     dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/${dslScriptFilename}"
 }
 def gitBranch;
