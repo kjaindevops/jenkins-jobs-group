@@ -42,7 +42,7 @@ pipeline {
         stage('Job DSL') {
             steps {
                 echo "Refreshing all the job definitions using pattern ${dslScripts} based on branch ${gitBranch}"
-                jobDsl targets: dslScripts
+                jobDsl scriptText: "targets('${dslScripts}')"
             }
         }
     }
