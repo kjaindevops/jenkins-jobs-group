@@ -35,10 +35,10 @@ node {
     }
 
     stage('Create Folders') {
-        folder('aws') {
-            folder('group') {
-                folder('groupfunctions-trf') {
-                    folder('admin-seedjob') {
+        job('aws') {
+            job('group') {
+                job('groupfunctions-trf') {
+                    job('admin-seedjob') {
                         stage('Job DSL') {
                             jobDsl targets: dslScripts
                         }
