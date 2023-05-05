@@ -36,6 +36,5 @@ node {
 
     stage('Job DSL') {
         jobDsl targets: dslScripts
-       }
     }
 }
