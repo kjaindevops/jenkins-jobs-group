@@ -22,20 +22,28 @@ switch (gitBranchType) {
         break
 }
 
-node {
-    stage('Checkout') {
-        deleteDir()
-        checkout([
-            $class: 'GitSCM',
-            branches: [[name: gitBranch]],
-            doGenerateSubmoduleConfigurations: false,
-            extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]],
-            submoduleCfg: [],
-            userRemoteConfigs: [[url: gitUrl]]
-        ])
-    }
+pipeline {
+    agent any
 
-    stage('Job DSL') {
-        jobDsl targets: dslScripts
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: gitBranch]],
+                    doGenerateSubmoduleConfigurations: false,
+                    extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]],
+                    submoduleCfg: [],
+                    userRemoteConfigs: [[url: gitUrl]]
+                ])
+            }
+        }
+
+        stage('Job DSL') {
+            steps {
+                echo "Refreshing all the job definitions using pattern ${dslScripts} based on branch ${gitBranch}"
+                jobDsl scriptText: "targets('${dslScripts}')"
+            }
+        }
     }
 }
