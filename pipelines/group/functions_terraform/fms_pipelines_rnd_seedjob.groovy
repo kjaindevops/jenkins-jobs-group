@@ -7,7 +7,7 @@ def dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/**/*.groovy"
 if (dslScriptFilename != '') {
     dslScripts = "jobs/nonprod/group/${dslScriptDirectory}/${dslScriptFilename}"
 }
-def gitBranch
+def gitBranch;
 
 // Set full branch names
 switch (gitBranchType) {
@@ -24,6 +24,7 @@ switch (gitBranchType) {
 
 node {
     stage('Checkout') {
+        deleteDir()
         checkout([
             $class: 'GitSCM',
             branches: [[name: gitBranch]],
